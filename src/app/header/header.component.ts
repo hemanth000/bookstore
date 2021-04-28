@@ -15,6 +15,9 @@ export class HeaderComponent implements OnInit {
   callkeyup(){
     this.getdata()
   }
+
+  //searching the list of books based on author name and title name
+
   async getdata(){
     console.log(this.value);
     const res=await fetch("http://localhost:3000/books");
@@ -31,20 +34,26 @@ export class HeaderComponent implements OnInit {
   this.listofbooks(result)
   }
 
+  //adding the books list to html
+
   listofbooks(output:any){
     const list= output.map((book: { title: any; })=>
-      `<div style="color:red">${book.title}</div>`
+      `<div>${book.title}</div>`
    ).join('')
    console.log(list); 
    this.html=list;
        
   }
 
+ //navigation to product details page
   navigateto(){
        this.route.navigate([`productdetails/${this.value}`])
        
        
   }
+
+//navigating to specific book categories
+
   navigatecategories(name:any){
     this.route.navigate(['/categories',name])
   }

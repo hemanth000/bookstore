@@ -11,13 +11,7 @@ export class RatingtestComponent implements OnInit {
 
   bookdetail:books[]=[]
 
-  ratings = {
-    sony: 4.7,
-    samsung: 3.4,
-    vizio: 2.3,
-    panasonic: 3.6,
-    phillips: 3.7
-  }
+
 
   starPercentageRounded:string=""
    starsTotal = 5;
@@ -36,9 +30,10 @@ export class RatingtestComponent implements OnInit {
 
   constructor(private bs:BookdetailService) { }
 
-  ngOnInit(): void {
-        this.bs.getbookdetail("AngularJS in Action").subscribe((data)=>{
+  ngOnInit() {
+        this.bs.getbookdetail("Hello! Flex 4").subscribe((data)=>{
           this.bookdetail=data;
+          console.log(this.bookdetail);
           this.rating=this.bookdetail[0].reviews[1].rating
         }
        )

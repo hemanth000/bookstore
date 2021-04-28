@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesbooksService } from './categoriesbooks.service';
 import { RatingtestComponent } from './ratingtest/ratingtest.component';
+import { NewreleasesComponent } from './newreleases/newreleases.component';
 
 
 
@@ -25,7 +26,8 @@ import { RatingtestComponent } from './ratingtest/ratingtest.component';
     ContentComponent,
     FooterComponent,
     CategoriesComponent,
-    RatingtestComponent
+    RatingtestComponent,
+    NewreleasesComponent
   ],
   imports: [
     BrowserModule,

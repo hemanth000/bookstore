@@ -44,12 +44,15 @@ b{
 .bottom-bar .search .bookslist {
     border-top: 2px solid #999;
   }
-  .bottom-bar .search .bookslist  div {
-    padding: 15px;
+  .bottom-bar .search .bookslist  {
     font-size: 20px;
-    color: #fff;
+    color: royalblue;
     border-top: 1px solid #666;
     cursor: pointer;
+  }
+
+  .bookslist div:hover{
+    background-color: #1e4dd4;
   }
 
 .bottom-bar .search button {

@@ -21,6 +21,9 @@ export class ProductdetailsComponent implements OnInit {
   newprice:any
   newreleases:books[]=[]
   bookdetail:books[]=[]
+
+  //created a review instance for posting reviews into books database
+
   reviewmodel=new review('hemanth',"unlocking android ",'hello world',0)
   
   // constructor(private ns:NewreleasesService) { }
@@ -33,17 +36,30 @@ export class ProductdetailsComponent implements OnInit {
     
   }
 
-  onsubmit(){
+   
+  //posting reviews into database of specific book
+
+  onsubmit(reviews:any){
     
     this.reviewmodel.title=this.bookdetail[0].title;
     console.log(this.reviewmodel);
     // console.log(this.bookdetail[0].title)
     this.pr.postreview(this.reviewmodel).subscribe((data)=>{
       console.log(data);
+     
     })
+    this.reloadcurrentpage()
+   
   }
   showform(){
     this.formvisible=true
+  }
+  
+  //reloading the page after the form submission.
+
+  reloadcurrentpage(){
+    console.log("hello world")
+    window.location.reload()
   }
 
  

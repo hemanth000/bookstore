@@ -24,8 +24,10 @@ body {
   line-height: 1.5;
 }
 .card-wrap {
+  z-index: -1;
   max-width: 1100px;
   margin: 0 auto;
+  
 }
 img {
   width: 100%;
