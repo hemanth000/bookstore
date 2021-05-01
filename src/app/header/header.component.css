@@ -43,17 +43,16 @@ b{
 }
 .bottom-bar .search .bookslist {
     border-top: 2px solid #999;
+    background-color:lightblue
   }
   .bottom-bar .search .bookslist  {
     font-size: 20px;
-    color: royalblue;
+    /* color: royalblue; */
     border-top: 1px solid #666;
     cursor: pointer;
   }
 
-  .bookslist div:hover{
-    background-color: #1e4dd4;
-  }
+   
 
 .bottom-bar .search button {
     position: absolute;

@@ -7,7 +7,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { HttpClientModule } from '@angular/common/http';
 import { NewreleasesService } from './newreleases.service';
 import { BookdetailService } from './bookdetail.service';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
 import { FooterComponent } from './footer/footer.component';
@@ -15,6 +15,13 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesbooksService } from './categoriesbooks.service';
 import { RatingtestComponent } from './ratingtest/ratingtest.component';
 import { NewreleasesComponent } from './newreleases/newreleases.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AdminComponent } from './admindashboard/admin/admin.component';
+import { AdddataComponent } from './admindashboard/adddata/adddata.component';
+import { UpdatedataComponent } from './admindashboard/updatedata/updatedata.component';
+
+
+
 
 
 
@@ -27,13 +34,20 @@ import { NewreleasesComponent } from './newreleases/newreleases.component';
     FooterComponent,
     CategoriesComponent,
     RatingtestComponent,
-    NewreleasesComponent
+    NewreleasesComponent,
+    AdminComponent,
+    AdddataComponent,
+    UpdatedataComponent
+    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [NewreleasesService,BookdetailService,CategoriesbooksService],
   bootstrap: [AppComponent]

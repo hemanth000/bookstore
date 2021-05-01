@@ -5,6 +5,7 @@ import { NewreleasesService } from '../newreleases.service';
 import { ActivatedRoute, ParamMap} from '@angular/router'
 import { review } from '../userreview';
 import { PostreviewsService } from '../postreviews.service';
+import {faStar,faShoppingCart,faStarHalf} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-productdetails',
@@ -12,6 +13,10 @@ import { PostreviewsService } from '../postreviews.service';
   styleUrls: ['./productdetails.component.css']
 })
 export class ProductdetailsComponent implements OnInit {
+
+  faStar=faStar
+  faShoppingCart=faShoppingCart
+  faStarHalf=faStarHalf
 
   formvisible=false
   name="hemanth";
@@ -21,6 +26,7 @@ export class ProductdetailsComponent implements OnInit {
   newprice:any
   newreleases:books[]=[]
   bookdetail:books[]=[]
+  average=0
 
   //created a review instance for posting reviews into books database
 
@@ -62,6 +68,19 @@ export class ProductdetailsComponent implements OnInit {
     window.location.reload()
   }
 
+  counter(i: number) {
+    return new Array(i);
+}
+  
+  averagerating(reviews:any){
+      let total=0
+    reviews.forEach((r:any) => {
+        total=total+r.rating;
+    });
+    this.average=Math.round((total/(reviews.length)*10))/10
+     
+  }
+
  
         
   
@@ -79,7 +98,7 @@ export class ProductdetailsComponent implements OnInit {
               console.log(this.oldprice,this.discount)
               var discountprice=(this.oldprice*this.discount)/100;
              this.newprice=this.oldprice-discountprice;
-              
+             this.averagerating(this.bookdetail[0].reviews)
             })
             
             

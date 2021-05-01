@@ -43,7 +43,7 @@
             <div class="col-md-6 sea">
                 <div class="search">
                     <input (keyup)="callkeyup()" [(ngModel)]="value" type="text" placeholder="Search">
-                    <button (click)="navigateto()"><i class="fa fa-search"></i></button>
+                    <button (click)="navigateto()"><fa-icon [icon]="faSearch"></fa-icon></button>
                     <div [innerHtml]="html" class="bookslist">
 
                     </div>
