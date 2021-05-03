@@ -5,13 +5,15 @@ var cors = require('cors')
 const app = express();
 
 const book=require('./models/book')
+// const product=require('./routes/product')
 
 console.log("todo require",book);
 
 mongoose.connect('mongodb://localhost:27017/bookstore', {useNewUrlParser: true},{ useFindAndModify: false })
+mongoose.set('useFindAndModify', false);
 
 
-
+// app.use('/products',product)
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors())
@@ -35,6 +37,7 @@ app.get('/books/:title',async (req,res)=>{
   var value=req.params.title;
    book.find({title:{$regex:value,$options:'$i'}}).exec((err,booksbytitle) =>{
     if (err) return handleError(err);
+      console.log(booksbytitle)
        res.json(booksbytitle);
   })
  
@@ -48,7 +51,7 @@ app.get('/categories/:name', (req,res)=>{
       if (err) return handleError(err);
          res.json(categorybooks);
     })
-  
+    
    
 })
 
@@ -83,6 +86,62 @@ app.post('/review',async (req,res)=>{
       )
   console.log("data pushed")
   res.send("data recieved");
+})
+
+//adding documents into books collection
+
+app.post('/products/add',(req,res)=>{
+  var book1=new book({
+
+      title:req.body.title,
+      isbn:req.body.isbn,
+      pageCount:req.body.pageCount,
+      publishedDate:req.body.publishedDate,
+      thumbnailUrl:req.body.thumbnailurl,
+      shortDescription:req.body.shortDescription,
+      longDescription:req.body.longDescription,
+      status:req.body.status,
+      authors:req.body.authors,
+      categories:req.body.categories,
+      price:req.body.price,
+      currency:req.body.currency,
+      discount:req.body.discount,
+      discountUnits:req.body.discountunit
+  })
+  book1.save(function (err, book) {
+      if (err) return console.error(err);
+      console.log( " saved to bookstore collection.");
+    });
+  res.status(200).send({"message":"data recieved"})
+  
+})
+
+//updating documents in books database
+
+app.put('/products/update',(req,res)=>{
+  var id=req.body._id;
+  console.log(id);
+  var updates=req.body;
+  console.log(req.body);
+  book.findByIdAndUpdate(id,updates,(err,result)=>{
+    if(err){
+      res.send(err)
+    }
+    console.log("document was updated");
+  })
+})
+
+//deleting documents from database
+
+app.delete('/products/:id',(req,res)=>{
+    var id=req.params.id;
+    console.log(id);
+    book.findByIdAndDelete(id,(err,result)=>{
+      if(err){
+        console.log(err)
+      }
+      console.log("document was deleted")
+    })
 })
 
 
