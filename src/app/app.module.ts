@@ -19,6 +19,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AdminComponent } from './admindashboard/admin/admin.component';
 import { AdddataComponent } from './admindashboard/adddata/adddata.component';
 import { UpdatedataComponent } from './admindashboard/updatedata/updatedata.component';
+import { DeletedataComponent } from './admindashboard/deletedata/deletedata.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 
 
@@ -37,7 +41,8 @@ import { UpdatedataComponent } from './admindashboard/updatedata/updatedata.comp
     NewreleasesComponent,
     AdminComponent,
     AdddataComponent,
-    UpdatedataComponent
+    UpdatedataComponent,
+    DeletedataComponent
     
 
   ],
@@ -47,7 +52,9 @@ import { UpdatedataComponent } from './admindashboard/updatedata/updatedata.comp
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [NewreleasesService,BookdetailService,CategoriesbooksService],
   bootstrap: [AppComponent]

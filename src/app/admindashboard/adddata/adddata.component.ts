@@ -33,7 +33,7 @@ export class AdddataComponent implements OnInit {
 
   showvalue(){
     console.log(this.addProductForm.value)
-     this.ap.addNewBook(this.addProductForm.value).subscribe(data=>console.log(data))
+     this.ap.addNewBook(this.addProductForm.value).subscribe(data=>console.log("success",data))
      this.reloadcurrentpage()
 
   }

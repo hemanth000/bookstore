@@ -18,6 +18,10 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['update'],{relativeTo:this.route})
   }
 
+  delete(){
+    this.router.navigate(['delete'],{relativeTo:this.route})
+  }
+
   ngOnInit(): void {
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
-import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faSearch,faShoppingCart} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +10,7 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements OnInit {
 
   faSearch=faSearch
+  faShoppingCart=faShoppingCart
 
   value:any
   html:any

@@ -1,13 +1,43 @@
-<div class="container">
+
     <div class="col-md-6 container">
-        <h1 class="container"><b>Update Products</b></h1><br>
+        <h1 class="container"><b>Update/delete Products</b></h1><br>
         <div class="search">
-            <input [(ngModel)]="title" type="text" placeholder="Search for the product to update">
-            <button (click)="showdata()"><i class="fa fa-search">sea</i></button>
+            <input [(ngModel)]="title" type="text" placeholder="enter title for search" (ngModelChange)="search()">
+            <!-- <button (click)="showdata()"><i class="fa fa-search">sea</i></button> -->
         </div>
     </div>
+
+    <table  id="books" *ngIf="!showform" class="mt-2"> 
+       <thead>
+        <tr>
+          <th>id</th>
+          <th>title</th>
+          <th>category</th>
+          <th>publisheddate</th>
+          <th>price</th>
+          <th>Actions</th>
+        </tr>
+       </thead>
+        <tbody>
+          <tr *ngFor="let book of allbooks ">
+            <td>{{book._id}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.categories[0]}}</td>
+            <td>{{book.publishedDate|date}}</td>
+            <td>{{book.price}}</td>
+            <td>
+              
+                <button type="button" (click)="showdata(book.title)" class="btn btn-primary mr-1">update</button> 
+                <button type="button" (click)="deleteproduct(book._id)"class="btn btn-danger">delete</button>
+               
+          </td>
+        </tr>
+        </tbody>
+        <!-- <pagination-controls  (pagechange)="p = $event"></pagination-controls> -->
+    </table>
     
-    <form [formGroup]="updateProductForm">
+    <div class="container">
+      <form [formGroup]="updateProductForm" *ngIf="showform">
 
         {{title}}
     
@@ -106,4 +136,6 @@
         </div>
         <button class="btn btn-primary mr-1" (click)="updatedata()" >update data</button>
       </form>
- </div>
+      </div>
+
+ 

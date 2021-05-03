@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { AllbooksService } from 'src/app/allbooks.service';
 import { books } from 'src/app/book';
 import { BookdetailService } from 'src/app/bookdetail.service';
+import { DeletebooksService } from 'src/app/deletebooks.service';
 import { UpdateproductService } from 'src/app/updateproduct.service';
 
 @Component({
@@ -14,12 +16,15 @@ export class UpdatedataComponent implements OnInit {
   title=""
   bookdetail:books[]=[]
   book:any
+  allbooks:books[]=[]
+  p:any=1
+  showform=false
 
-  constructor(private bs:BookdetailService,private us:UpdateproductService) { }
+  constructor(private bs:BookdetailService,private us:UpdateproductService,private ab:AllbooksService,private ds:DeletebooksService) { }
 
   updateProductForm=new FormGroup({
 
-    _id:new FormControl(''),
+    _id:new FormControl(''), 
      title:new FormControl(''),
      isbn:new FormControl(''),
      pageCount:new FormControl(''),
@@ -36,11 +41,12 @@ export class UpdatedataComponent implements OnInit {
      discountunit:new FormControl('percent'),
 
   })
-  showdata(){
-    this.bs.getbookdetail(this.title).subscribe((data)=>{
+  showdata(title:any){
+    this.bs.getbookdetail(title).subscribe((data)=>{
       this.bookdetail=data;
       console.log(this.bookdetail)
       this.book=this.bookdetail[0]
+      this.showform=true
       this.fillform()
     })
     
@@ -74,9 +80,37 @@ export class UpdatedataComponent implements OnInit {
      this.us.updatebok(this.updateProductForm.value).subscribe((data)=>{
        console.log(data);
      })
+     this.reloadcurrentpage() 
   }
 
-  ngOnInit(): void {
+  search(){
+    if(this.title==""){
+      this.ngOnInit()
+    }
+    else{
+      this.allbooks=this.allbooks.filter((res)=>{
+        return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase())
+      })
+    }
+  }
+  deleteproduct(id:any){
+
+    console.log(id);
+    this.ds.deletebooks(id).subscribe((data)=>{
+           console.log(data);
+         })
+        this.reloadcurrentpage()
+
+  }
+  reloadcurrentpage(){
+    window.location.reload()
+  }
+
+  ngOnInit() {
+    this.ab.getallbooks().subscribe((data)=>{
+      console.log(data);
+      this.allbooks=data;
+    })
   }
 
 }

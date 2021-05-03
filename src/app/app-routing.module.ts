@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdddataComponent } from './admindashboard/adddata/adddata.component';
 import { AdminComponent } from './admindashboard/admin/admin.component';
+import { DeletedataComponent } from './admindashboard/deletedata/deletedata.component';
 import { UpdatedataComponent } from './admindashboard/updatedata/updatedata.component';
 import { AppComponent } from './app.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:"newreleases",component:NewreleasesComponent},
   {path:"admin",component:AdminComponent,children:[
     {path:'add',component:AdddataComponent},
-    {path:'update',component:UpdatedataComponent}
+    {path:'update',component:UpdatedataComponent},
+    {path:'delete',component:DeletedataComponent}
   ]}
 ];
 
