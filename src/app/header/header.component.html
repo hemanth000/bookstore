@@ -17,12 +17,13 @@
                     <a routerLink="categories/Web Development"  class="nav-item nav-link">Web Development</a>
                 </div>
                <div class="navbar-nav ml-auto">
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">Login</a>
-                            <a href="#" class="dropdown-item">Register</a>
-                        </div>
+                    <div class="nav-item">
+                        <!-- <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">User Account</a>
+                        <div class="dropdown-menu"> -->
+                            <a href="#" *ngIf="!isloggedin" class="dropdown-item d-inline" routerLink="/login">Login</a>
+                            <a href="#" *ngIf="!isloggedin"class="dropdown-item d-inline" routerLink="/register">Register</a>
+                            <a href="#" *ngIf="isloggedin" class="dropdown-item d-inline" (click)="rs.logoutuser()">logout</a>
+                        <!-- </div> -->
                     </div>
                 </div> 
             </div>

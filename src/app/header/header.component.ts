@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
 import {faSearch,faShoppingCart} from '@fortawesome/free-solid-svg-icons';
+import { RegisteruserService } from '../registeruser.service';
 
 @Component({
   selector: 'app-header',
@@ -14,12 +15,15 @@ export class HeaderComponent implements OnInit {
 
   value:any
   html:any
-  constructor(private route:Router) { }
+  constructor(private route:Router,public rs:RegisteruserService) { }
+
+  isloggedin=this.rs.loggedin()
 
   callkeyup(){
     this.getdata()
   }
-
+  
+ 
   //searching the list of books based on author name and title name
 
   async getdata(){
@@ -61,6 +65,8 @@ export class HeaderComponent implements OnInit {
   navigatecategories(name:any){
     this.route.navigate(['/categories',name])
   }
+
+  
   
   ngOnInit(): void {
     

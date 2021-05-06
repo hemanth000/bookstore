@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { books } from './book';
 
@@ -14,4 +15,6 @@ export class CategoriesbooksService {
   getbooksbycategories(name:any):Observable<books[]>{
     return this.http.get<books[]>(`http://localhost:3000/categories/${name}`)
   }
+
+  
 }

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NewreleasesService } from './newreleases.service';
 import { BookdetailService } from './bookdetail.service';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -22,6 +22,12 @@ import { UpdatedataComponent } from './admindashboard/updatedata/updatedata.comp
 import { DeletedataComponent } from './admindashboard/deletedata/deletedata.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { RegisterComponent } from './users/register/register.component';
+import { LoginComponent } from './users/login/login.component';
+import { AuthGuard } from './auth.guard';
+import { TokeninterceptorService } from './tokeninterceptor.service';
+import { AddtocartComponent } from './cart/addtocart/addtocart.component';
+
 
 
 
@@ -42,7 +48,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AdminComponent,
     AdddataComponent,
     UpdatedataComponent,
-    DeletedataComponent
+    DeletedataComponent,
+    RegisterComponent,
+    LoginComponent,
+    AddtocartComponent,
+  
     
 
   ],
@@ -56,7 +66,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
     Ng2SearchPipeModule,
     NgxPaginationModule
   ],
-  providers: [NewreleasesService,BookdetailService,CategoriesbooksService],
+  providers: [NewreleasesService,BookdetailService,CategoriesbooksService,AuthGuard,{
+    provide:HTTP_INTERCEPTORS,
+    useClass:TokeninterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
