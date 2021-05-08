@@ -1,5 +1,5 @@
 <div class="jumbotron text-center view">
-    <h1>My Cart</h1>
+    <h1>{{username}} Cart</h1>
 </div>
 <div class="cart-page">
     <div class="container-fluid">
@@ -28,13 +28,13 @@
                                     <td>{{prod.price}}</td>
                                     <td>
                                         <div class="qty">
-                                            <button class="btn-minus" (click)="dec(prod)"><i class="fa fa-minus"></i></button>
+                                            <button class="btn-minus" (click)="dec(prod)"><fa-icon [icon]="faMinusSquare"></fa-icon></button>
                                             <input type="text" value="{{prod.qty}}">
-                                            <button class="btn-plus" (click)="inc(prod)"><i class="fa fa-plus"></i></button>
+                                            <button class="btn-plus" (click)="inc(prod)"><fa-icon [icon]="faPlusSquare"></fa-icon></button>
                                         </div>
                                     </td>
                                     <td>{{prod.totalAmount}}</td>
-                                    <td><button (click)="remove(prod)"><i class="fa fa-trash"></i></button></td>
+                                    <td><button (click)="remove(prod)"><fa-icon [icon]="faTrashAlt"></fa-icon></button></td>
                                 </tr>
                             </tbody>
                         </table>

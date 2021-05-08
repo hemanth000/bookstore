@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisteruserService } from 'src/app/registeruser.service';
 
 @Component({
@@ -15,13 +16,13 @@ export class RegisterComponent implements OnInit {
     email:new FormControl('',[Validators.required]),
     password:new FormControl('',[Validators.required,Validators.minLength(5)])
   })
-  constructor(private rs:RegisteruserService) { }
+  constructor(private rs:RegisteruserService,private route:Router) { }
 
   postdata(){
     console.log(this.registerForm.value)
     this.rs.reigsteruser(this.registerForm.value).subscribe((data)=>{
       console.log(data);
-      localStorage.setItem('token',data.token)
+      this.route.navigate(['/login'])
     })
   }
 

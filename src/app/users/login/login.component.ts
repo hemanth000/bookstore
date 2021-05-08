@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisteruserService } from 'src/app/registeruser.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     password:new FormControl('',[Validators.required]),
   })
 
-  constructor(private rs:RegisteruserService) { }
+  constructor(private rs:RegisteruserService,private route:Router) { }
 
   validateuser(){
     console.log(this.loginForm.value);
@@ -22,8 +23,15 @@ export class LoginComponent implements OnInit {
       console.log(data)
        localStorage.setItem('token',data.token)
        localStorage.setItem('id',data.userp._id)
+       this.route.navigate([''])
     })
+    
   }
+
+  
+    
+    
+
 
   ngOnInit(): void {
 

@@ -34,6 +34,13 @@ export class RegisteruserService {
     
     
   }
+
+  isadminlogged(){
+    if(localStorage.getItem('id')=="6094b06d0fe14c40d8bbe36a"){
+      return true
+    }
+    return false
+  }
   
   logoutuser(){
     localStorage.removeItem('token')

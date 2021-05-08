@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router,ParamMap, ActivatedRoute } from '@angular/router';
 import { books } from 'src/app/book';
 import { BookdetailService } from 'src/app/bookdetail.service';
+import { DeleteproductsincartService } from 'src/app/deleteproductsincart.service';
 import { RegisteruserService } from 'src/app/registeruser.service';
 import { SignedusersService } from 'src/app/signedusers.service';
+import {faTrashAlt,faPlusSquare,faMinusSquare} from '@fortawesome/free-solid-svg-icons';
 
  interface Product {
   pid: number;
@@ -36,13 +38,18 @@ export class AddtocartComponent implements OnInit {
   total: number=0;
   grandtot:number=0;
   dis:number=0;
+  username:any
+  faTrashAlt=faTrashAlt
+  faPlusSquare=faPlusSquare
+  faMinusSquare=faMinusSquare
 
-  constructor(private bs:BookdetailService,private route:ActivatedRoute,private su:SignedusersService,private rs:RegisteruserService) { }
+  constructor(private bs:BookdetailService,private route:ActivatedRoute,private su:SignedusersService,private rs:RegisteruserService,private ds:DeleteproductsincartService) { }
 
   ngOnInit() {
     
       
       this.su.getuserInfo(this.rs.getuserid()).subscribe((data)=>{
+          this.username=data.firstname
           this.productArray=data.cart
           console.log(this.productArray)
           this.productArray.forEach((product) => {
@@ -116,6 +123,10 @@ export class AddtocartComponent implements OnInit {
    this.total=this.total-prod.totalAmount;
   this.dis=this.dis-prod.discount;
    console.log(prod)
+   console.log(prod.pid)
+   this.ds.deleteproducts(prod.pid).subscribe((data)=>{
+     console.log(data)
+   })
 }
 }
 

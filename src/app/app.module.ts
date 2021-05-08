@@ -27,6 +27,20 @@ import { LoginComponent } from './users/login/login.component';
 import { AuthGuard } from './auth.guard';
 import { TokeninterceptorService } from './tokeninterceptor.service';
 import { AddtocartComponent } from './cart/addtocart/addtocart.component';
+import { EditInfoComponent } from './edit-info/edit-info.component';
+import { NavComponent } from './nav/nav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { HomeComponent } from './home/home.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 
@@ -52,6 +66,10 @@ import { AddtocartComponent } from './cart/addtocart/addtocart.component';
     RegisterComponent,
     LoginComponent,
     AddtocartComponent,
+    EditInfoComponent,
+    NavComponent,
+    HomeComponent,
+    NotificationComponent
   
     
 
@@ -64,7 +82,17 @@ import { AddtocartComponent } from './cart/addtocart/addtocart.component';
     ReactiveFormsModule,
     FontAwesomeModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule
   ],
   providers: [NewreleasesService,BookdetailService,CategoriesbooksService,AuthGuard,{
     provide:HTTP_INTERCEPTORS,

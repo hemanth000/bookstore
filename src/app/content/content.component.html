@@ -48,7 +48,7 @@
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.html">
-                                    <img src="/assets/images/book.jpg" alt="Product Image">
+                                    <img src="{{book.thumbnailUrl}}" alt="Product Image">
                                 </a>
                                 <div class="product-action">
                                     <a href="#"><fa-icon [icon]="faShoppingCart"></fa-icon></a>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="product-price">
                                 <h3><span>$</span>{{book.price}}</h3>
-                                <a class="btn" href=""><fa-icon [icon]="faShoppingCart"></fa-icon>Add to cart</a>
+                                <button [disabled]="!(rs.loggedin())" class="btn" (click)="gotocart(book)"><fa-icon [icon]="faShoppingCart"></fa-icon>Add to cart</button>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.html">
-                                    <img src="/assets/images/book.jpg" alt="Product Image">
+                                    <img src="{{book.thumbnailUrl}}" alt="Product Image">
                                 </a>
                                 <div class="product-action">
                                     <a href="#"><fa-icon [icon]="faShoppingCart"></fa-icon></a>
@@ -174,7 +174,7 @@
                             </div>
                             <div class="product-price">
                                 <h3><span>$</span>{{book.price}}</h3>
-                                <a class="btn" href=""><fa-icon [icon]="faShoppingCart"></fa-icon>Add to cart</a>
+                                <button [disabled]="!(rs.loggedin())" class="btn" (click)="gotocart(book)"><fa-icon [icon]="faShoppingCart"></fa-icon>Add to cart</button>
                             </div>
                         </div>
                     </div>
@@ -282,7 +282,7 @@
                             </div>
                             <div class="product-image">
                                 <a href="product-detail.html">
-                                    <img src="/assets/images/book.jpg" alt="Product Image">
+                                    <img src="{{book.thumbnailUrl}}" alt="Product Image">
                                 </a>
                                 <div class="product-action">
                                     <a href="#"><fa-icon [icon]="faShoppingCart"></fa-icon></a>
@@ -290,7 +290,7 @@
                             </div>
                             <div class="product-price">
                                 <h3><span>$</span>{{book.price}}</h3>
-                                <a class="btn" href=""><fa-icon [icon]="faShoppingCart"></fa-icon>Add to cart</a>
+                                <button [disabled]="!(rs.loggedin())" class="btn" (click)="gotocart(book)" href=""><fa-icon [icon]="faShoppingCart"></fa-icon>Add to cart</button>
                             </div>
                         </div>
                     </div>
